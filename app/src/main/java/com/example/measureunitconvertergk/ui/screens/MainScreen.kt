@@ -1,6 +1,11 @@
 package com.example.measureunitconvertergk.ui.screens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -8,13 +13,31 @@ import androidx.compose.ui.res.stringResource
 import com.example.measureunitconvertergk.ui.components.MeasurementUnitDropdown
 import com.example.measureunitconvertergk.ui.components.UserInputForm
 import com.example.measureunitconvertergk.viewmodels.MainViewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val selectedOption by viewModel.selectedOption
-    Column {
-        Text(text = "Please select which units you would like to interchange:")
-        MeasurementUnitDropdown(viewModel)
-        UserInputForm(measurementUnit = stringResource(id = selectedOption))
+    val result = viewModel.result
+    val conversionToText = viewModel.conversionTo
+    Column ( modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp)
+    ) {
+
+        Scaffold(
+            topBar = {
+                Text(text = "Please select which units you would like to interchange:")
+            }
+        ) { innerPadding ->
+            Column(modifier = Modifier.padding(innerPadding)) {
+                MeasurementUnitDropdown(viewModel)
+                UserInputForm(viewModel)
+                Text(text = "The converted value is:$result $conversionToText")
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.example.measureunitconvertergk.ui.components
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -16,9 +18,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.ViewModel
+import androidx.compose.ui.unit.dp
+import com.example.measureunitconvertergk.util.assignConversionFromText
 import com.example.measureunitconvertergk.viewmodels.MainViewModel
 
 @Composable
@@ -27,11 +28,12 @@ fun MeasurementUnitDropdown(viewModel: MainViewModel) {
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
             .wrapContentSize(Alignment.TopStart)
+            .size(height = 30.dp, width = 290.dp),
+        contentAlignment = Alignment.TopCenter
     ) {
         Text(
-            text = stringResource(id = viewModel.selectedOption.value),
+            text = viewModel.selectedOption.value,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = { expanded = true })
@@ -42,11 +44,14 @@ fun MeasurementUnitDropdown(viewModel: MainViewModel) {
             onDismissRequest = { expanded = false },
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(
+                    50.dp,50.dp
+                )
                 .background(MaterialTheme.colorScheme.surface)
         ) {
-            viewModel.items.forEachIndexed { index, id ->
+            viewModel.conversionTypes.forEachIndexed { index, id ->
                 DropdownMenuItem(
-                    text = { Text(text = stringResource(id = id))},
+                    text = { Text(text = id)},
                     onClick = {
                         viewModel.onOptionSelected(index)
                         expanded = false

@@ -19,3 +19,13 @@ fun assignConversionToText(selectedConversionType: String): String {
                 else -> "Unknown selection"
         }
 }
+
+fun convert(value: Double, conversionType: String): String {
+        return when (conversionType) {
+                "km <--> mile" -> (value * 0.621371).toString()
+                "km <--> feet" -> (value * 3280.84).toString()
+                "m <--> mile" -> (value * 0.000621371).toString()
+                "m <--> feet" -> (value * 3.28084).toString()
+                else -> "Invalid Conversion Type"
+        }
+}
