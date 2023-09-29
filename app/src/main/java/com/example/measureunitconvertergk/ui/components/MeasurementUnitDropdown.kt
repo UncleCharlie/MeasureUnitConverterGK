@@ -1,6 +1,5 @@
 package com.example.measureunitconvertergk.ui.components
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,7 +18,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.measureunitconvertergk.util.assignConversionFromText
 import com.example.measureunitconvertergk.viewmodels.MainViewModel
 
 @Composable
@@ -33,7 +31,7 @@ fun MeasurementUnitDropdown(viewModel: MainViewModel) {
         contentAlignment = Alignment.TopCenter
     ) {
         Text(
-            text = viewModel.selectedOption.value,
+            text = viewModel.selectedOption,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = { expanded = true })

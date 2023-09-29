@@ -1,7 +1,6 @@
 package com.example.measureunitconvertergk.viewmodels
 
 import android.app.Application
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -27,14 +26,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     var conversionTo by mutableStateOf(assignConversionToText(conversionTypes[0]))
 
-    private val _selectedOption = mutableStateOf(conversionTypes[0])
-    val selectedOption: State<String> = _selectedOption
+    var selectedOption by mutableStateOf(conversionTypes[0])
 
     fun onOptionSelected(index: Int) {
         selectedIndex = index
-        _selectedOption.value = conversionTypes[index]
-        conversionFrom = assignConversionFromText(selectedOption.value)
-        conversionTo = assignConversionToText(selectedOption.value)
+        selectedOption = conversionTypes[index]
+        conversionFrom = assignConversionFromText(selectedOption)
+        conversionTo = assignConversionToText(selectedOption)
         result = 0.0
     }
 }

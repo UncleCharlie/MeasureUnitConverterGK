@@ -15,12 +15,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.unit.sp
-import com.example.measureunitconvertergk.util.assignConversionFromText
-import com.example.measureunitconvertergk.util.assignConversionToText
 import com.example.measureunitconvertergk.util.convert
 import com.example.measureunitconvertergk.viewmodels.MainViewModel
-import kotlin.random.Random
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
