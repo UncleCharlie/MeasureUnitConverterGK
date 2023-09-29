@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MeasureUnitConverterGK</string>
+    <string name="km_mile">km &lt;--&gt; mile</string>
+    <string name="km_feet">km &lt;--&gt; feet</string>
+    <string name="m_mile">m &lt;--&gt; mile</string>
+    <string name="m_feet">m &lt;--&gt; feet</string>
+</resources>
